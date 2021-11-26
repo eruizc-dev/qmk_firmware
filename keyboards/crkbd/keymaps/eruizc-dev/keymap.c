@@ -25,9 +25,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [SPECIAL] = LAYOUT_split_3x6_3(
         RESET, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5,               KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, CUSTOM_CODE,
-        LOAD_VIMRC, KC_F11, KC_F12, KC_F13, KC_F14, KC_F15,     KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_BTN1, KC_TRNS,
+        LOAD_VIMRC, KC_F11, KC_F12, KC_F13, KC_F14, KC_F15,     KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_BTN1, TO(MOBA),
         CHANGE_SYSTEM_PREV, KC_UNDO, KC_CUT, KC_COPY, KC_PSTE, KC_TRNS,    KC_PSCR, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, CHANGE_SYSTEM_NEXT,
         KC_TRNS, KC_TRNS, KC_TRNS,                              KC_TRNS, KC_TRNS, KC_TRNS
+    ),
+    [MOBA] = LAYOUT_split_3x6_3(
+        KC_GESC,   KC_1, KC_2, KC_3,     KC_4,   KC_5,            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TAB,    KC_Q, KC_W, KC_E,     KC_R,   KC_D,            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, TO(DEFAULT),
+        KC_LSHIFT, KC_Y, KC_X, KC_P,     KC_B,   KC_F,            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                               KC_LCTRL, KC_SPC, KC_LALT,         KC_TRNS, KC_TRNS, KC_TRNS
     ),
     //[TRNS] = LAYOUT_split_3x6_3(
     //    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,

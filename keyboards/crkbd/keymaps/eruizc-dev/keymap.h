@@ -15,6 +15,7 @@ enum LAYERS {
     NUMBER,
     SYMBOL,
     SPECIAL,
+    MOBA,
 };
 
 enum CUSTOM_MACROS {
