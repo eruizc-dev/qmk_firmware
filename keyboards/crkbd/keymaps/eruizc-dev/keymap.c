@@ -24,10 +24,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS, KC_TRNS, LT(SPECIAL, KC_NO),                   KC_TRNS, KC_TRNS, KC_TRNS
     ),
     [SPECIAL] = LAYOUT_split_3x6_3(
-        RESET, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5,               KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, CUSTOM_CODE,
-        LOAD_VIMRC, KC_F11, KC_F12, KC_F13, KC_F14, KC_F15,     KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_BTN1, TO(MOBA),
-        CHANGE_SYSTEM_PREV, KC_UNDO, KC_CUT, KC_COPY, KC_PSTE,  KC_TRNS,    KC_PSCR, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, CHANGE_SYSTEM_NEXT,
-        KC_TRNS, KC_TRNS, KC_TRNS,                              KC_TRNS, KC_TRNS, KC_TRNS
+        RESET, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5,                           KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_TRNS,
+        LOAD_VIMRC, KC_F11, KC_F12, KC_F13, KC_F14, KC_F15,                 KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_BTN1, TO(MOBA),
+        CHANGE_SYSTEM_PREV, KC_UNDO, KC_CUT, KC_COPY, KC_PSTE,  KC_TRNS,    KC_PSCR, CUSTOM_CODE, CUSTOM_CODE2, KC_TRNS, KC_TRNS, CHANGE_SYSTEM_NEXT,
+        KC_TRNS, KC_TRNS, KC_TRNS,                                          KC_TRNS, KC_TRNS, KC_TRNS
     ),
     [MOBA] = LAYOUT_split_3x6_3(
         KC_GESC,   KC_1, KC_2, KC_3,     KC_4,   KC_5,            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -99,6 +99,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     if (keycode == CUSTOM_CODE && record->event.pressed) {
         SEND_STRING(CODE);
+    }
+    if (keycode == CUSTOM_CODE2 && record->event.pressed) {
+        SEND_STRING(CODE2);
     }
     if (keycode == CHANGE_SYSTEM_PREV && record->event.pressed) {
         session_data.system = session_data.system > 0 ? session_data.system - 1 : 3;
