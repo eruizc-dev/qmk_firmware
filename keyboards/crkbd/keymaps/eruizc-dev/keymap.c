@@ -51,48 +51,49 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(ctrl_alt_combo, KC_RALT),
 };
 
-#ifdef OLED_ENABLE
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    return OLED_ROTATION_270;
-}
+//#ifdef OLED_ENABLE
+//oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+//    return OLED_ROTATION_270;
+//}
+//
+//void render_left(void) {
+//    static const char PROGMEM mac_upper[] = { 0x95, 0x96, 0 };
+//    static const char PROGMEM mac_lower[] = { 0xb5, 0xb6, 0 };
+//    static const char PROGMEM windows_upper[] = { 0x97, 0x98, 0 };
+//    static const char PROGMEM windows_lower[] = { 0xb7, 0xb8, 0 };
+//    static const char PROGMEM linux_upper[] = { 0x99, 0x9a, 0 };
+//    static const char PROGMEM linux_lower[] = { 0xb9, 0xba, 0 };
+//    static const char PROGMEM android_upper[] = { 0x9b, 0x9c, 0 };
+//    static const char PROGMEM android_lower[] = { 0xbb, 0xbc, 0 };
+//
+//    oled_write_P(mac_upper, session_data.system == MAC);
+//    oled_write_P(PSTR(" "), false);
+//    oled_write_P(windows_upper, session_data.system == WINDOWS);
+//    oled_write_P(mac_lower, session_data.system == MAC);
+//    oled_write_P(PSTR(" "), false);
+//    oled_write_P(windows_lower, session_data.system == WINDOWS);
+//    oled_write_P(PSTR("     "), false);
+//    oled_write_P(linux_upper, session_data.system == LINUX);
+//    oled_write_P(PSTR(" "), false);
+//    oled_write_P(android_upper, session_data.system == ANDROID);
+//    oled_write_P(linux_lower, session_data.system == LINUX);
+//    oled_write_P(PSTR(" "), false);
+//    oled_write_P(android_lower, session_data.system == ANDROID);
+//}
+//
+//void render_right(void) {
+//    oled_write_ln_P(PSTR("Right"), false);
+//}
+//
+//void oled_task_user(void) {
+//    if (is_keyboard_master()) {
+//        render_left();
+//    } else {
+//        render_right();
+//    }
+//}
+//#endif
 
-void render_left(void) {
-    static const char PROGMEM mac_upper[] = { 0x95, 0x96, 0 };
-    static const char PROGMEM mac_lower[] = { 0xb5, 0xb6, 0 };
-    static const char PROGMEM windows_upper[] = { 0x97, 0x98, 0 };
-    static const char PROGMEM windows_lower[] = { 0xb7, 0xb8, 0 };
-    static const char PROGMEM linux_upper[] = { 0x99, 0x9a, 0 };
-    static const char PROGMEM linux_lower[] = { 0xb9, 0xba, 0 };
-    static const char PROGMEM android_upper[] = { 0x9b, 0x9c, 0 };
-    static const char PROGMEM android_lower[] = { 0xbb, 0xbc, 0 };
-
-    oled_write_P(mac_upper, session_data.system == MAC);
-    oled_write_P(PSTR(" "), false);
-    oled_write_P(windows_upper, session_data.system == WINDOWS);
-    oled_write_P(mac_lower, session_data.system == MAC);
-    oled_write_P(PSTR(" "), false);
-    oled_write_P(windows_lower, session_data.system == WINDOWS);
-    oled_write_P(PSTR("     "), false);
-    oled_write_P(linux_upper, session_data.system == LINUX);
-    oled_write_P(PSTR(" "), false);
-    oled_write_P(android_upper, session_data.system == ANDROID);
-    oled_write_P(linux_lower, session_data.system == LINUX);
-    oled_write_P(PSTR(" "), false);
-    oled_write_P(android_lower, session_data.system == ANDROID);
-}
-
-void render_right(void) {
-    oled_write_ln_P(PSTR("Right"), false);
-}
-
-void oled_task_user(void) {
-    if (is_keyboard_master()) {
-        render_left();
-    } else {
-        render_right();
-    }
-}
-#endif
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (keycode == LOAD_VIMRC && record->event.pressed) {
         SEND_STRING("echo \"" VIMRC "\" > /tmp/.vimrc && alias vim='vim -u /tmp/.vimrc'");
